@@ -2,10 +2,10 @@
 
 This repository is the submission entry for the "Quantum Natural Language Processing (QNLP) with lambeq" challenge provided by Quantinuum, Inc. during the first Womanium Quantum Hackathon 2022 by the team:
 
-Team name: neiljdo
-Team members: Neil John D. Ortega (neiljdo#9361, [@neiljdo](https://github.com/neiljdo), neiljohn.ortega@gmail.com)
-Presenter: Neil John D. Ortega
-Name of the challenge: Quantum Natural Language Processing with lambeq (Quantinuum)
+* Name: neiljdo
+* Members: Neil John D. Ortega (neiljdo#9361, [@neiljdo](https://github.com/neiljdo), neiljohn.ortega@gmail.com)
+* Presenter: Neil John D. Ortega
+* Challenge: Quantum Natural Language Processing with lambeq (Quantinuum)
 
 ## Available files
 
@@ -64,3 +64,7 @@ We implemented the following changes and/or restrictions to the pipeline to acco
 4. Logged training and validation costs, and training and validation accuracies for the entire experiment incrementally into a JSON file
 
 We summarized the entire model pipeline into a fully parametrized and customizable `run_experiment` function - please refer to `ntbks/QNLP Experiments.ipynb` for the full implementation and usage.
+
+## Results & Discussion
+
+The best quantum circuit...
