@@ -99,7 +99,7 @@ We list several ideas for future extensions of this hackathon below.
 
 ## References
 1. discopy: Qnlp tutorial. https://discopy.readthedocs.io/en/main/notebooks/qnlp-tutorial.html. Accessed: 2022-08-24.
-2. lambeq: Online documentation. https://cqcl.github.io/lambeq/. Accessed: 2022-04-04.
+2. lambeq: Online documentation. https://cqcl.github.io/lambeq/. Accessed: 2022-08-24.
 3. Vojtech Havlıcek, Antonio D Corcoles, Kristan Temme, Aram W Harrow, Abhinav Kandala, Jerry M Chow, and Jay M Gambetta. 2019. Supervised Learning with Quantum-Enhanced Feature Spaces. Nature, 567(7747):209–212.
 4. Thomas Hoffmann. Quantum models for word-sense disambiguation. https://hdl.handle.net/20.500.12380/302687. Accessed: 2022-08-24.
 5. Robin Lorenz, Anna Pearson, Konstantinos Meichanetzidis, Dimitri Kartsaklis, and Bob Coecke. QNLP in practice: Running compositional models of meaning on a quantum computer. CoRR, abs/2102.12846, 2021.
