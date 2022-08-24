@@ -85,3 +85,22 @@ After knowing the best ansatz class and parametrization, we retrained a new mode
 
 <small>Retraining results for `CustomAnsatz(1, 1, 3, 2)`</small><br>
 <img width="1091" alt="image" src="https://user-images.githubusercontent.com/1657332/186310771-63ff0085-4250-43db-ba3a-9939a8d8120c.png">
+
+## Future Work
+
+We list several ideas for future extensions of this hackathon below.
+
+1. Use a bigger dataset as the 100 rows provided could lead to overfitting easily
+2. Use a different dataset in terms of grammatical structure of the sentences
+3. Implement a different reader (as suggested in the original challenge)
+4. Implement a rewrite rule (as suggested in the original challenge)
+5. Extend `lambeq` and `discopy` to make creation of custom ansatze easier. After this, we can try the ansatzes listed in Yeung (2020) and see if there's a difference in the model performance
+6. Try a different task other than classification-based tasks. Some that come into mind are translation (is there a grammar algebra for translation?) or generation (not entirely sure if this is possible)
+
+## References
+1. discopy: Qnlp tutorial. https://discopy.readthedocs.io/en/main/notebooks/qnlp-tutorial.html. Accessed: 2022-08-24.
+2. lambeq: Online documentation. https://cqcl.github.io/lambeq/. Accessed: 2022-04-04.
+3. Vojtech Havlıcek, Antonio D Corcoles, Kristan Temme, Aram W Harrow, Abhinav Kandala, Jerry M Chow, and Jay M Gambetta. 2019. Supervised Learning with Quantum-Enhanced Feature Spaces. Nature, 567(7747):209–212.
+4. Thomas Hoffmann. Quantum models for word-sense disambiguation. https://hdl.handle.net/20.500.12380/302687. Accessed: 2022-08-24.
+5. Robin Lorenz, Anna Pearson, Konstantinos Meichanetzidis, Dimitri Kartsaklis, and Bob Coecke. QNLP in practice: Running compositional models of meaning on a quantum computer. CoRR, abs/2102.12846, 2021.
+6. Richie Yeung. Diagrammatic design and study of ansatze for quantum machine learning. arXiv preprint arXiv:2011.11073, 2020.
