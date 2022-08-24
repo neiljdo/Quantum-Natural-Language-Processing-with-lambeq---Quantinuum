@@ -9,7 +9,7 @@ This repository is the submission entry for the "Quantum Natural Language Proces
 
 ## Available files
 
-1. `ntbks/QNLP Experiments.ipynb` - this notebook contains the experiment runner function that combines the learnings from the above notebook into a single function that can be parametrized to run different experiments. For asynchronous inspection of the results, the experiment runner writes its (partial) results into a JSON file that can be analyzed on its own. This is to maximize efficiency as the experiment trials can take same time, even using the `jax`-optimized `NumpyModel` class.
+1. `ntbks/QNLP Experiments.ipynb` - this notebook contains the experiment runner function that combines the learnings from the exploratory notebook (`ntbks/QNLP.ipynb`) into a single function that can be parametrized to run different experiments. For asynchronous inspection of the results, the experiment runner writes its (partial) results into a JSON file that can be analyzed on its own. This is to maximize efficiency as the experiment trials can take same time, even using the `jax`-optimized `NumpyModel` class.
 2. `ntbks/QNLP Experiment Results.ipynb` - this notebook contains the logic for processing the results from the experiment runs so that they can be rendered as plots. The main results we display are the learning curve, i.e. train/validation loss vs epochs, and the metrics curve, i.e. train/validation accuracy vs epochs.
 3. `ntbks/QNLP.ipynb` - this notebook contains exploratory work done by the team to explore the challenge problem and, more importantly, to explore the `lambeq` library to be able to perform the challenge task(s).
 
@@ -38,10 +38,10 @@ In addition to the custom class above, we implemented a `CustomAnsatz` class ext
 #### Ansatz parametrization
 We parametrized the ansatze with the 4-tuple (qsn, qss, pn, d), similar to the scheme by Lorenz et al. (2021). The meaning of each parameter and allowed values are as follows.
 
-* qsn is the number of qubits for the noun atomic type, either 1 or 2
-* qss is the number of qubits for the sentence atomic type, either 1 or 2
-* pn is the number of parameters in the Euler decomposition, either 1 or 3
-* d is the depth of the word ansatz, either 1 or 2
+* qsn is the number of qubits for the noun atomic type, either 1 or 2.
+* qss is the number of qubits for the sentence atomic type, either 1 or 2.
+* pn is the number of parameters in the Euler decomposition, either 1 or 3.
+* d is the depth of the word ansatz, either 1 or 2.
 
 The values are restricted to keep the number of qubits as low as possible. For both the IQP and the custom ansatz, we try all the possible 4-tuple of parameters, resulting in 32 different model/ansatz parametrizations.
 
@@ -58,11 +58,11 @@ We trained each parametrization of the quantum circuit model on all the 20 folds
 
 We implemented the following changes and/or restrictions to the pipeline to accomodate the problem at hand:
 
-1. Preprocess two sentences at a time instead of a single sentence
+1. Preprocess two sentences at a time instead of a single sentence.
 2. Used a custom `NumpyModel` class combined with `jit` for reasonable training times. This class implements a different forward pass to make sure that we get a probability vector for each sentence pair input. We used _cosine similarity_ between the circuit outputs to generate these probability vectors.
-3. Fixed the parser to `BobcatParser`
-4. Fixed the optimizer type and hyperparameters
-5. Logged training and validation costs, and training and validation accuracies for the entire experiment incrementally into a JSON file
+3. Fixed the parser to `BobcatParser`.
+4. Fixed the optimizer type and hyperparameters.
+5. Logged training and validation costs, and training and validation accuracies for the entire experiment incrementally into a JSON file.
 
 We summarized the entire model pipeline into a fully parametrized and customizable `run_experiment` function - please refer to `ntbks/QNLP Experiments.ipynb` for the full implementation and usage.
 
@@ -90,12 +90,12 @@ After knowing the best ansatz class and parametrization, we retrained a new mode
 
 We list several ideas for future extensions of this hackathon below.
 
-1. Use a bigger dataset as the 100 rows provided could lead to overfitting easily
-2. Use a different dataset in terms of grammatical structure of the sentences
-3. Implement a different reader (as suggested in the original challenge)
-4. Implement a rewrite rule (as suggested in the original challenge)
-5. Extend `lambeq` and `discopy` to make creation of custom ansatze easier. After this, we can try the ansatzes listed in Yeung (2020) and see if there's a difference in the model performance
-6. Try a different task other than classification-based tasks. Some that come into mind are translation (is there a grammar algebra for translation?) or generation (not entirely sure if this is possible)
+1. Use a bigger dataset as the 100 rows provided could lead to overfitting easily.
+2. Use a different dataset in terms of grammatical structure of the sentences.
+3. Implement a different reader (as suggested in the original challenge).
+4. Implement a rewrite rule (as suggested in the original challenge).
+5. Extend `lambeq` and `discopy` to make creation of custom ansatze easier. After this, we can try the ansatzes listed in Yeung (2020) and see if there's a difference in the model performance.
+6. Try a different task other than classification-based tasks. Some that come into mind are translation (is there a grammar algebra for translation?) or generation (not entirely sure if this is possible).
 
 ## References
 1. discopy: Qnlp tutorial. https://discopy.readthedocs.io/en/main/notebooks/qnlp-tutorial.html. Accessed: 2022-08-24.
