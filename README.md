@@ -96,6 +96,7 @@ We list several ideas for future extensions of this hackathon below.
 4. Implement a rewrite rule (as suggested in the original challenge).
 5. Extend `lambeq` and `discopy` to make creation of custom ansatze easier. After this, we can try the ansatzes listed in Yeung (2020) and see if there's a difference in the model performance.
 6. Try a different task other than classification-based tasks. Some that come into mind are translation (is there a grammar algebra for translation?) or generation (not entirely sure if this is possible).
+7. Try running the circuit optimization with real quantum hardware.
 
 ## References
 1. discopy: Qnlp tutorial. https://discopy.readthedocs.io/en/main/notebooks/qnlp-tutorial.html. Accessed: 2022-08-24.
