@@ -53,18 +53,35 @@ The entire dataset consists of 100 sentence pairs, each with a binary label. We 
 
 We trained each parametrization of the quantum circuit model on all the 20 folds for 500 epochs each. Our pipeline closely followed the pipeline of Lorenz et al. (2021) which we show below.
 
+<small>(Lorenz et al., 2021)</small><br>
 <img width="285" alt="image" src="https://user-images.githubusercontent.com/1657332/186206312-a38f3508-08b0-4711-96bd-507a9bfa3f54.png">
-(Lorenz et al., 2021)
 
 We implemented the following changes and/or restrictions to the pipeline to accomodate the problem at hand:
 
 1. Preprocess two sentences at a time instead of a single sentence
 2. Used a custom `NumpyModel` class combined with `jit` for reasonable training times. This class implements a different forward pass to make sure that we get a probability vector for each sentence pair input. We used _cosine similarity_ between the circuit outputs to generate these probability vectors.
-3. Fixed the optimizer type and hyperparameters
-4. Logged training and validation costs, and training and validation accuracies for the entire experiment incrementally into a JSON file
+3. Fixed the parser to `BobcatParser`
+4. Fixed the optimizer type and hyperparameters
+5. Logged training and validation costs, and training and validation accuracies for the entire experiment incrementally into a JSON file
 
 We summarized the entire model pipeline into a fully parametrized and customizable `run_experiment` function - please refer to `ntbks/QNLP Experiments.ipynb` for the full implementation and usage.
 
 ## Results & Discussion
 
-The best quantum circuit...
+We processed the experiment log data in the notebook `ntbks/QNLP Experiment Results.ipynb`. We took the mean values across fold to generate a single plot for each ansatz parametrization. We compared the learning curves and metric curves for all ansatz parametrization per ansatz class in a single plot.
+
+<small>`IQPAnsatz` training results</small><br>
+<img width="922" alt="" src="https://user-images.githubusercontent.com/1657332/186305581-68a03125-9661-4a5c-bfa2-bff11cf93e57.png">
+
+<small>`CustomAnsatz` training results</small><br>
+<img width="922" alt="image" src="https://user-images.githubusercontent.com/1657332/186306570-4cb3b8c5-17ea-4296-975d-507bcd1ae1be.png">
+
+The best models are the ones that used the __custom ansatz__, with the best parametrization of __(1, 1, 3, 2)__. This parametrization, we think, offers the right balance of number of qubits and number of trainable parameters to provide a good capacity for the model to learn. Surprisingly, too many qubits and too many trainable parameters adversely affects the training of the model. In addition, the custom ansatz also converged to near perfect validation accuracy __5x faster__ compared to the IQP ansatz.
+
+After knowing the best ansatz class and parametrization, we retrained a new model that used the `CustomTketModel` with the Qiskit Aer backend instead. This time, the training time is way slower than the `CustomNumpyModel` that we limited the experiment to a single split. We chose the split where the custom ansatz with (1, 1, 3, 2) parametrization performed well. We created a similar set of plots for the final results of this single-split experiment.
+
+<small>Best split for `CustomAnsatz(1, 1, 3, 2)` based on validation accuracy is #18</small><br>
+<img width="852" alt="image" src="https://user-images.githubusercontent.com/1657332/186310419-f15629b9-1c33-4dd1-9faf-2c8d129b4999.png">
+
+<small>Retraining results for `CustomAnsatz(1, 1, 3, 2)`</small><br>
+<img width="1091" alt="image" src="https://user-images.githubusercontent.com/1657332/186310771-63ff0085-4250-43db-ba3a-9939a8d8120c.png">
